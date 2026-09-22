@@ -1,0 +1,32 @@
+[project]
+name = "profile-rag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Aditya Chunduri", email = "aditya2210.a1@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb>=1.5.9",
+    "fastapi>=0.141.1",
+    "fastembed>=0.8.0",
+    "llama-index-core>=0.14.25",
+    "llama-index-embeddings-fastembed>=0.7.0",
+    "llama-index-retrievers-bm25>=0.8.0",
+    "llama-index-vector-stores-chroma>=0.6.0",
+    "uvicorn>=0.53.0",
+]
+
+[project.scripts]
+profile-rag = "profile_rag.build:build"
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+]
