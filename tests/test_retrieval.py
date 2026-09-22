@@ -55,3 +55,11 @@ def test_eval_floor():
     by = {r["mode"]: r for r in out["rows"]}
     assert by["hybrid+rerank"]["recall@3"] >= 0.97  # ratchet: 0.979 on 2026-09-22; rerank removed reads 0.958
     assert by["hybrid+rerank"]["recall@3"] >= by["bm25"]["recall@3"]
+
+
+def test_warm_touches_the_reranker():
+    from profile_rag import retrieve
+
+    out = retrieve.warm()
+    assert out["reranked"] == out["chunks"] > 0
+    assert retrieve._reranker.cache_info().currsize == 1

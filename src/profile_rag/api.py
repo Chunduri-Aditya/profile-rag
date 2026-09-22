@@ -6,6 +6,7 @@ and no tool behind /ask, so input hardening is about CPU abuse, not injection.
 import hashlib
 import os
 import time
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,7 +16,7 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
 
 from . import config
-from .retrieve import answer, suggestions
+from .retrieve import answer, suggestions, warm
 
 RATE_PER_MINUTE = int(os.getenv("PROFILE_RAG_RATE_PER_MINUTE", "30"))
 MAX_QUESTION = 500
@@ -28,7 +29,15 @@ ALLOWED_ORIGINS = [
 ]
 
 limiter = Limiter(key_func=get_remote_address)
-app = FastAPI(title="profile-rag", docs_url=None, redoc_url=None)
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    # Load both ONNX models and the indexes before serving, so the host's
+    # health check passes only once the first real answer would be fast.
+    warm()
+    yield
+
+
+app = FastAPI(title="profile-rag", docs_url=None, redoc_url=None, lifespan=lifespan)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(
