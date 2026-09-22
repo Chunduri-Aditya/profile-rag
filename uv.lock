@@ -1970,6 +1970,8 @@ dependencies = [
     { name = "llama-index-embeddings-fastembed" },
     { name = "llama-index-retrievers-bm25" },
     { name = "llama-index-vector-stores-chroma" },
+    { name = "numpy" },
+    { name = "pyyaml" },
     { name = "uvicorn" },
 ]
 
@@ -1988,6 +1990,8 @@ requires-dist = [
     { name = "llama-index-embeddings-fastembed", specifier = ">=0.7.0" },
     { name = "llama-index-retrievers-bm25", specifier = ">=0.8.0" },
     { name = "llama-index-vector-stores-chroma", specifier = ">=0.6.0" },
+    { name = "numpy", specifier = ">=2.5.3" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "uvicorn", specifier = ">=0.53.0" },
 ]
 

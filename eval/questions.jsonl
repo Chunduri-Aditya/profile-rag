@@ -1,0 +1,48 @@
+{"q": "what is Agent Shield", "expect": ["project/agent-shield/overview"]}
+{"q": "what is transparency rate", "expect": ["project/agent-shield/evidence/1", "publication/Beyond Attack Success Rate"]}
+{"q": "which harness does Agent Shield run on", "expect": ["project/agent-shield/decision/0", "project/agent-shield/evidence/10", "project/agent-shield/overview"]}
+{"q": "how many attack modules does Agent Shield have", "expect": ["project/agent-shield/evidence/0", "project/agent-shield/metrics"]}
+{"q": "why was the tools anchor withdrawn", "expect": ["project/agent-shield/evidence/3", "project/agent-shield/failure/0", "project/agent-shield/decision/4"]}
+{"q": "what does spotlighting do to transparency rate", "expect": ["project/agent-shield/evidence/5"]}
+{"q": "where did Aditya study", "expect": ["education/"]}
+{"q": "what degree does he have", "expect": ["education/"]}
+{"q": "when did he graduate from USC", "expect": ["education/University of Southern California"]}
+{"q": "where is Aditya based", "expect": ["profile/identity"]}
+{"q": "how can I contact Aditya", "expect": ["profile/identity"]}
+{"q": "is he open to work", "expect": ["profile/identity"]}
+{"q": "what did he do at Easley Dunn", "expect": ["experience/Easley Dunn Productions, Inc./"]}
+{"q": "what is the gameplay analyzer", "expect": ["experience/Easley Dunn Productions, Inc./"]}
+{"q": "how many frames does the field tracker certify", "expect": ["experience/Easley Dunn Productions, Inc./bullet/0"]}
+{"q": "what was his research at USC Viterbi", "expect": ["experience/USC — Viterbi School of Engineering/"]}
+{"q": "retinal artery vein segmentation", "expect": ["experience/USC — Viterbi School of Engineering/"]}
+{"q": "what did he do at Yashoda Hospitals", "expect": ["experience/Yashoda Hospitals/"]}
+{"q": "Power BI Tableau dashboards", "expect": ["experience/Yashoda Hospitals/bullet/1"]}
+{"q": "what did he automate at RB Associates", "expect": ["experience/RB Associates/"]}
+{"q": "accounting reconciliation workflows", "expect": ["experience/RB Associates/"]}
+{"q": "what did he do at SSN College of Engineering", "expect": ["experience/SSN College of Engineering/"]}
+{"q": "what is the personal digital twin", "expect": ["project/twin/overview"]}
+{"q": "how does twin handle privacy of transcripts", "expect": ["project/twin/constraint/1", "project/twin/evidence/3", "project/twin/decision/1"]}
+{"q": "how many chunks reach the model per turn in twin", "expect": ["project/twin/constraint/0", "project/twin/metrics"]}
+{"q": "what is AI RemixMate", "expect": ["project/ai-remixmate/overview"]}
+{"q": "how does RemixMate detect downbeats", "expect": ["project/ai-remixmate/evidence/2", "project/ai-remixmate/decision/0", "project/ai-remixmate/tradeoff/0"]}
+{"q": "how many tests does AI RemixMate have", "expect": ["project/ai-remixmate/evidence/11", "project/ai-remixmate/metrics"]}
+{"q": "what is the AI Health Journal", "expect": ["project/ai-health-journal/overview"]}
+{"q": "what is the crisis safety floor sensitivity", "expect": ["project/ai-health-journal/evidence/3", "project/ai-health-journal/metrics"]}
+{"q": "what is MetaLearnML", "expect": ["project/metalearnml/overview"]}
+{"q": "did the meta-learner actually speed up AutoML", "expect": ["project/metalearnml/failure/0", "project/metalearnml/tradeoff/0", "project/metalearnml/metrics", "project/metalearnml/evidence/4"]}
+{"q": "what is Sourcewarden", "expect": ["project/sourcewarden/overview"]}
+{"q": "how does Sourcewarden gate workflow mutations", "expect": ["project/sourcewarden/decision/3", "project/sourcewarden/constraint/2"]}
+{"q": "what is jarvis", "expect": ["project/jarvis/overview"]}
+{"q": "what is the attention drift detector", "expect": ["project/attention-drift-detector/overview"]}
+{"q": "does the attention detector record video", "expect": ["project/attention-drift-detector/evidence/2", "project/attention-drift-detector/decision/0"]}
+{"q": "what is AkashicTree", "expect": ["project/akashic-tree/overview"]}
+{"q": "which voice synthesis does AkashicTree use", "expect": ["project/akashic-tree/evidence/3"]}
+{"q": "what is ChatDB", "expect": ["project/chatdb/overview"]}
+{"q": "what is Model Behavior Lab", "expect": ["project/model-behavior-lab/overview"]}
+{"q": "what is Company Agents", "expect": ["project/company-agents/overview"]}
+{"q": "does he know PyTorch", "expect": ["skills/ML & Modeling"]}
+{"q": "what computer vision tools does he use", "expect": ["skills/Computer Vision & Audio"]}
+{"q": "what vector databases has he used", "expect": ["skills/Data & Retrieval"]}
+{"q": "what are his publications", "expect": ["publication/"]}
+{"q": "wind power paper", "expect": ["publication/Wind Power"]}
+{"q": "how does he think about evaluation", "expect": ["about/1"]}

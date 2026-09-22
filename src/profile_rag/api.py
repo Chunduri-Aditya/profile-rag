@@ -1,8 +1,10 @@
 """FastAPI surface.  uv run uvicorn profile_rag.api:app"""
+import time
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from .retrieve import search
+from .retrieve import answer, suggestions
 
 app = FastAPI(title="profile-rag")
 
@@ -16,13 +18,14 @@ def health():
     return {"ok": True}
 
 
+@app.get("/suggestions")
+def suggest():
+    return {"suggestions": suggestions()}
+
+
 @app.post("/ask")
 def ask(body: Ask):
-    hits = search(body.question)
-    return {
-        "answer": hits[0].node.get_content() if hits else None,
-        "sources": [
-            {"id": h.node.node_id, "score": h.score, **h.node.metadata} for h in hits
-        ],
-        "mode": "extract",
-    }
+    t0 = time.perf_counter()
+    out = answer(body.question)
+    out["latency_ms"] = round((time.perf_counter() - t0) * 1000)
+    return out
