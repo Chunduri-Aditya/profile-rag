@@ -19,6 +19,13 @@ curl -s localhost:8000/health
 curl -s -X POST localhost:8000/ask -H 'content-type: application/json' -d '{"question":"what is Agent Shield"}'
 ```
 
+## Ask from the terminal
+
+```bash
+uv run python -m profile_rag.ask "what is Agent Shield"
+uv run python -m profile_rag.ask --mode dense "retinal segmentation"   # raw vector search, no FAQ or rerank
+```
+
 ## Check
 
 ```bash

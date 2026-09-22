@@ -9,6 +9,7 @@ import numpy as np
 import yaml
 from fastembed.rerank.cross_encoder import TextCrossEncoder
 from llama_index.core import Settings, VectorStoreIndex
+from llama_index.core.llms import MockLLM
 from llama_index.core.retrievers import QueryFusionRetriever
 from llama_index.core.schema import NodeWithScore
 from llama_index.embeddings.fastembed import FastEmbedEmbedding
@@ -31,7 +32,9 @@ _SENT = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9(])")
 
 @lru_cache(maxsize=1)
 def _embed() -> FastEmbedEmbedding:
-    Settings.llm = None
+    # A placeholder LLM object: nothing calls it, and a bare None makes
+    # LlamaIndex print "Using MockLLM" on every process start.
+    Settings.llm = MockLLM()
     Settings.embed_model = FastEmbedEmbedding(model_name=config.EMBED_MODEL, threads=ONNX_THREADS)
     return Settings.embed_model
 
@@ -47,7 +50,7 @@ def _retrievers():
     bm25.similarity_top_k = CANDIDATES
     hybrid = QueryFusionRetriever(
         [dense, bm25], similarity_top_k=CANDIDATES, num_queries=1,
-        mode="reciprocal_rerank", use_async=False, llm=None,
+        mode="reciprocal_rerank", use_async=False, llm=Settings.llm,
     )
     return {"dense": dense, "bm25": bm25, "hybrid": hybrid}
 

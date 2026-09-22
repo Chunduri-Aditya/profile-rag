@@ -7,6 +7,7 @@ import shutil
 
 import chromadb
 from llama_index.core import Settings, StorageContext, VectorStoreIndex
+from llama_index.core.llms import MockLLM
 from llama_index.core.schema import TextNode
 from llama_index.embeddings.fastembed import FastEmbedEmbedding
 from llama_index.retrievers.bm25 import BM25Retriever
@@ -33,7 +34,7 @@ def load_nodes() -> list[TextNode]:
 
 
 def build() -> int:
-    Settings.llm = None
+    Settings.llm = MockLLM()
     Settings.embed_model = FastEmbedEmbedding(model_name=config.EMBED_MODEL)
     for d in (config.CHROMA_DIR, config.BM25_DIR):
         shutil.rmtree(d, ignore_errors=True)
