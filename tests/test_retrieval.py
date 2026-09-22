@@ -53,5 +53,5 @@ def test_api_ask_shape():
 def test_eval_floor():
     out = run(modes=("bm25", "hybrid+rerank"))
     by = {r["mode"]: r for r in out["rows"]}
-    assert by["hybrid+rerank"]["recall@3"] >= 0.85
+    assert by["hybrid+rerank"]["recall@3"] >= 0.97  # ratchet: 0.979 on 2026-09-22; rerank removed reads 0.958
     assert by["hybrid+rerank"]["recall@3"] >= by["bm25"]["recall@3"]
