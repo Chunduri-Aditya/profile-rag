@@ -23,6 +23,8 @@ ALLOWED_ORIGINS = [
     "https://chunduri-aditya.github.io",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    # Comma separated extras for previews and local drives, e.g. a static server.
+    *[o.strip() for o in os.getenv("PROFILE_RAG_EXTRA_ORIGINS", "").split(",") if o.strip()],
 ]
 
 limiter = Limiter(key_func=get_remote_address)

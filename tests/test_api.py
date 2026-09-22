@@ -37,3 +37,19 @@ def test_rate_limit_allow_then_deny():
     assert codes[: api.RATE_PER_MINUTE] == [200] * api.RATE_PER_MINUTE
     assert codes[-1] == 429
     api.limiter.reset()
+
+
+def test_extra_origins_env_extends_allowlist(monkeypatch):
+    import importlib
+
+    monkeypatch.setenv("PROFILE_RAG_EXTRA_ORIGINS", "http://127.0.0.1:8899, https://preview.example")
+    fresh = importlib.reload(api)
+    try:
+        c = TestClient(fresh.app)
+        ok = c.options("/ask", headers={"Origin": "http://127.0.0.1:8899", "Access-Control-Request-Method": "POST"})
+        assert ok.headers.get("access-control-allow-origin") == "http://127.0.0.1:8899"
+        bad = c.options("/ask", headers={"Origin": "https://evil.example", "Access-Control-Request-Method": "POST"})
+        assert "access-control-allow-origin" not in bad.headers
+    finally:
+        monkeypatch.delenv("PROFILE_RAG_EXTRA_ORIGINS")
+        importlib.reload(api)

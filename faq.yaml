@@ -1,5 +1,24 @@
 # Canonical questions with answers in the portfolio's own wording. Each answer must
 # be traceable to a corpus chunk (source id) so nothing here can drift from the site.
+# Order matters: the first six are the suggestions the site shows.
+- q: What is Agent Shield?
+  a: Agent Shield is an adversarial evaluation framework plus local runtime perimeter that stress tests LLM agents across prompt injection, MCP tool poisoning, RAG memory poisoning, and behavioral drift, built on UK AISI's Inspect AI harness with every threat mapped to OWASP and MITRE ATLAS.
+  source: project/agent-shield/overview
+- q: What are Aditya's publications?
+  a: Beyond Attack Success Rate, Measuring Operator-Facing Transparency in LLM Agent Security (sole authored preprint, Zenodo 2026, doi 10.5281/zenodo.20789431), and Wind Power Analysis Using Machine Learning in Wind Turbines (IJRASET, Vol 11, Aug 2023).
+  source: publication/Beyond Attack Success Rate
+- q: What does Aditya do at Easley Dunn?
+  a: AI/ML Engineer Intern on the Gameplay Analyzer Team (Aug 2026 to present, remote), turning NFL Blitz gameplay video into field positions in yards with classical geometry and refusing frames the system cannot certify.
+  source: experience/Easley Dunn Productions, Inc./overview
+- q: What is the Personal Digital Twin?
+  a: Persistent agent memory behind a fail closed privacy boundary, selecting five source tagged chunks per turn from a profile, a redacted interview transcript and expert reflections, with leak and redaction gates that refuse to build a bad index.
+  source: project/twin/overview
+- q: Where did Aditya study?
+  a: M.S., Applied Data Science from the University of Southern California (Dec 2025) and B.Tech, Computer Science and Engineering (AI/ML) from SRM Institute of Science and Technology (Jul 2023).
+  source: education/University of Southern California
+- q: What is Aditya's experience with RAG and retrieval?
+  a: RAG with ChromaDB, pgvector and vector search across the Personal Digital Twin, AI Health Journal and Sourcewarden, with retrieval evals attached to each.
+  source: skills/Data & Retrieval
 - q: Who is Aditya Chunduri?
   a: Aditya Chunduri is an ML / AI Engineer based in San Francisco, CA, building agentic systems, evaluation infrastructure, and production AI applications.
   source: profile/identity
@@ -12,30 +31,15 @@
 - q: How can I contact Aditya?
   a: Email chunduriaditya2@gmail.com, GitHub github.com/Chunduri-Aditya, LinkedIn linkedin.com/in/chunduriaditya.
   source: profile/identity
-- q: Where did Aditya study?
-  a: M.S., Applied Data Science from the University of Southern California (Dec 2025) and B.Tech, Computer Science and Engineering (AI/ML) from SRM Institute of Science and Technology (Jul 2023).
-  source: education/University of Southern California
 - q: What degree does Aditya have?
   a: M.S., Applied Data Science, University of Southern California, graduated Dec 2025; B.Tech, Computer Science and Engineering (AI/ML), SRM Institute of Science and Technology, Jul 2023.
   source: education/University of Southern California
-- q: What is Agent Shield?
-  a: Agent Shield is an adversarial evaluation framework plus local runtime perimeter that stress tests LLM agents across prompt injection, MCP tool poisoning, RAG memory poisoning, and behavioral drift, built on UK AISI's Inspect AI harness with every threat mapped to OWASP and MITRE ATLAS.
-  source: project/agent-shield/overview
 - q: What is Transparency Rate?
   a: Transparency Rate is whether an agent flags an attack to its operator, introduced in Agent Shield as a third axis alongside attack success rate and task utility.
   source: project/agent-shield/evidence/1
-- q: What are Aditya's publications?
-  a: Beyond Attack Success Rate, Measuring Operator-Facing Transparency in LLM Agent Security (sole authored preprint, Zenodo 2026, doi 10.5281/zenodo.20789431), and Wind Power Analysis Using Machine Learning in Wind Turbines (IJRASET, Vol 11, Aug 2023).
-  source: publication/Beyond Attack Success Rate
-- q: What does Aditya do at Easley Dunn?
-  a: AI/ML Engineer Intern on the Gameplay Analyzer Team (Aug 2026 to present, remote), turning NFL Blitz gameplay video into field positions in yards with classical geometry and refusing frames the system cannot certify.
-  source: experience/Easley Dunn Productions, Inc./overview
 - q: What did Aditya research at USC?
   a: Research Assistant in Computer Vision and Medical Imaging at USC Viterbi (Jun 2024 to Dec 2024), building retinal artery/vein mask generation and training data refinement for the team's segmentation model.
   source: experience/USC — Viterbi School of Engineering/overview
-- q: What is the Personal Digital Twin?
-  a: Persistent agent memory behind a fail closed privacy boundary, selecting five source tagged chunks per turn from a profile, a redacted interview transcript and expert reflections, with leak and redaction gates that refuse to build a bad index.
-  source: project/twin/overview
 - q: What is AI RemixMate?
   a: A full stack DJ engine with research grade music information retrieval that mixes two songs into one clean transition, with 904 tests and GitHub Actions CI.
   source: project/ai-remixmate/overview
@@ -54,9 +58,6 @@
 - q: What programming languages and ML frameworks does Aditya use?
   a: Python, PyTorch, TensorFlow, Keras, Scikit-learn, NumPy, Pandas, plus FastAPI, Flask, React/TypeScript, Docker and GitHub Actions on the backend.
   source: skills/ML & Modeling
-- q: What is Aditya's experience with RAG and retrieval?
-  a: RAG with ChromaDB, pgvector and vector search across the Personal Digital Twin, AI Health Journal and Sourcewarden, with retrieval evals attached to each.
-  source: skills/Data & Retrieval
 - q: What computer vision work has Aditya done?
   a: Field registration and homography for a gameplay analyzer at Easley Dunn, retinal vessel segmentation data at USC, YOLOv5 and OpenCV evaluation at SSN, and an on device attention drift detector with MediaPipe.
   source: skills/Computer Vision & Audio
