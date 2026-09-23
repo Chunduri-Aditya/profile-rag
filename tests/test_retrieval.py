@@ -42,7 +42,7 @@ def test_answer_falls_back_off_topic():
 
 
 def test_api_ask_shape():
-    r = TestClient(app).post("/ask", json={"question": "what is jarvis"})
+    r = TestClient(app).post("/ask", json={"question": "what is taintgate"})
     assert r.status_code == 200
     body = r.json()
     assert body["mode"] in {"faq", "extract"}

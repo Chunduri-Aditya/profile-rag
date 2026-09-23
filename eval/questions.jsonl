@@ -32,7 +32,7 @@
 {"q": "did the meta-learner actually speed up AutoML", "expect": ["project/metalearnml/failure/0", "project/metalearnml/tradeoff/0", "project/metalearnml/metrics", "project/metalearnml/evidence/4"]}
 {"q": "what is Sourcewarden", "expect": ["project/sourcewarden/overview"]}
 {"q": "how does Sourcewarden gate workflow mutations", "expect": ["project/sourcewarden/decision/3", "project/sourcewarden/constraint/2"]}
-{"q": "what is jarvis", "expect": ["project/jarvis/overview"]}
+{"q": "what is taintgate", "expect": ["project/taintgate/overview"]}
 {"q": "what is the attention drift detector", "expect": ["project/attention-drift-detector/overview"]}
 {"q": "does the attention detector record video", "expect": ["project/attention-drift-detector/evidence/2", "project/attention-drift-detector/decision/0"]}
 {"q": "what is AkashicTree", "expect": ["project/akashic-tree/overview"]}

@@ -52,9 +52,9 @@
 - q: What is Sourcewarden?
   a: Security gated n8n workflow orchestration, a chatbot that helps build n8n workflows and only mutates a live instance behind a signed approval gate, with 71 offline tests.
   source: project/sourcewarden/overview
-- q: What is jarvis?
+- q: What is taintgate?
   a: Turn scoped containment for coding agents, a Claude Code hook layer that taints a turn after hostile content is read and fails closed when the screener cannot run, with 124 tests.
-  source: project/jarvis/overview
+  source: project/taintgate/overview
 - q: What programming languages and ML frameworks does Aditya use?
   a: Python, PyTorch, TensorFlow, Keras, Scikit-learn, NumPy, Pandas, plus FastAPI, Flask, React/TypeScript, Docker and GitHub Actions on the backend.
   source: skills/ML & Modeling

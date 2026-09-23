@@ -33,7 +33,7 @@ def test_cors_allows_portfolio_and_blocks_others():
 def test_rate_limit_allow_then_deny():
     api.limiter.reset()
     c = TestClient(api.app)
-    codes = [c.post("/ask", json={"question": "what is jarvis"}).status_code for _ in range(api.RATE_PER_MINUTE + 1)]
+    codes = [c.post("/ask", json={"question": "what is taintgate"}).status_code for _ in range(api.RATE_PER_MINUTE + 1)]
     assert codes[: api.RATE_PER_MINUTE] == [200] * api.RATE_PER_MINUTE
     assert codes[-1] == 429
     api.limiter.reset()
