@@ -21,8 +21,8 @@
 {"q": "accounting reconciliation workflows", "expect": ["experience/RB Associates/"]}
 {"q": "what did he do at SSN College of Engineering", "expect": ["experience/SSN College of Engineering/"]}
 {"q": "what is the personal digital twin", "expect": ["project/twin/overview"]}
-{"q": "how does twin handle privacy of transcripts", "expect": ["project/twin/constraint/1", "project/twin/evidence/3", "project/twin/decision/1"]}
-{"q": "how many chunks reach the model per turn in twin", "expect": ["project/twin/constraint/0", "project/twin/metrics"]}
+{"q": "how does twin handle privacy of transcripts", "expect": ["project/persona-rag/constraint/1", "project/persona-rag/evidence/3", "project/persona-rag/decision/1"]}
+{"q": "how many chunks reach the model per turn in twin", "expect": ["project/persona-rag/constraint/0", "project/persona-rag/metrics"]}
 {"q": "what is AI RemixMate", "expect": ["project/ai-remixmate/overview"]}
 {"q": "how does RemixMate detect downbeats", "expect": ["project/ai-remixmate/evidence/2", "project/ai-remixmate/decision/0", "project/ai-remixmate/tradeoff/0"]}
 {"q": "how many tests does AI RemixMate have", "expect": ["project/ai-remixmate/evidence/11", "project/ai-remixmate/metrics"]}

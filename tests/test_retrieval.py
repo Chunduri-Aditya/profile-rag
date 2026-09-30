@@ -7,11 +7,11 @@ from profile_rag.retrieve import answer, candidates, faq_match, rerank
 
 
 def test_rerank_puts_overview_first_for_what_is():
-    q = "what is Agent Shield"
+    q = "what is taintgate"
     fused = candidates(q, mode="hybrid")
-    assert fused[0].node.node_id != "project/agent-shield/overview", "fusion already right; test proves nothing"
+    assert fused[0].node.node_id != "project/taintgate/overview", "fusion already right; test proves nothing"
     top = rerank(q, fused)[0]
-    assert top.node.node_id == "project/agent-shield/overview"
+    assert top.node.node_id == "project/taintgate/overview"
 
 
 def test_rerank_is_order_independent():
