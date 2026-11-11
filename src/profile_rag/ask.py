@@ -20,7 +20,8 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="profile_rag.ask", description=__doc__.split("\n")[0])
     ap.add_argument("question", nargs="+")
     ap.add_argument("--json", action="store_true", help="print the full answer object")
-    ap.add_argument("--mode", choices=["dense", "bm25", "hybrid"], help="raw ranked chunks from one retriever")
+    ap.add_argument("--mode", choices=["dense", "bm25", "hybrid"],
+                    help="raw ranked chunks from one retriever")
     args = ap.parse_args(argv)
     q = " ".join(args.question)
 

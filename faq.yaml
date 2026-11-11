@@ -6,7 +6,7 @@
   source: project/agent-shield/overview
 - q: What are Aditya's publications?
   a: Beyond Attack Success Rate, Measuring Operator-Facing Transparency in LLM Agent Security (sole authored preprint, Zenodo 2026, doi 10.5281/zenodo.20789431), and Wind Power Analysis Using Machine Learning in Wind Turbines (IJRASET, Vol 11, Aug 2023).
-  source: publication/Beyond Attack Success Rate
+  source: "publication/Beyond Attack Success Rate: Measuring Operator-Facing Transparency in LLM Agent Security"
 - q: What does Aditya do at Easley Dunn?
   a: AI/ML Engineer Intern on the Gameplay Analyzer Team (Aug 2026 to present, remote), turning NFL Blitz gameplay video into field positions in yards with classical geometry and refusing frames the system cannot certify.
   source: experience/Easley Dunn Productions, Inc./overview

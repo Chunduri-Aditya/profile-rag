@@ -74,7 +74,10 @@ def rerank(question: str, nodes: list[NodeWithScore]) -> list[NodeWithScore]:
     return out
 
 
-_STOP = frozenset("a an the of to in on for and or is are was were be it its this that he his what how which does did do with by at as from has have".split())
+_STOP = frozenset(
+    "a an the of to in on for and or is are was were be it its this that he his what how "
+    "which does did do with by at as from has have".split()
+)
 _TOKEN = re.compile(r"[a-z0-9][a-z0-9.+#/-]*")
 
 
@@ -115,6 +118,18 @@ def faq_match(question: str) -> dict | None:
     return {**entries[i], "score": float(sims[i])} if sims[i] >= FAQ_THRESHOLD else None
 
 
+@lru_cache(maxsize=1)
+def _store() -> ChromaVectorStore:
+    client = chromadb.PersistentClient(path=str(config.CHROMA_DIR))
+    return ChromaVectorStore(chroma_collection=client.get_or_create_collection(config.COLLECTION))
+
+
+def _node_by_id(node_id: str):
+    """Exact lookup in the persisted index, so an FAQ source never depends on top-k."""
+    found = _store().get_nodes(node_ids=[node_id])
+    return found[0] if found else None
+
+
 def _source(n: NodeWithScore) -> dict:
     return {"id": n.node.node_id, "score": n.score, "text": n.node.get_content(), **n.node.metadata}
 
@@ -138,8 +153,8 @@ def warm() -> dict:
 def answer(question: str) -> dict:
     hit = faq_match(question)
     if hit:
-        src = next((n for n in candidates(hit["q"]) if n.node.node_id == hit["source"]), None)
-        sources = [_source(src)] if src else []
+        node = _node_by_id(hit["source"])
+        sources = [_source(NodeWithScore(node=node, score=hit["score"]))] if node else []
         return {"answer": hit["a"], "mode": "faq", "score": hit["score"], "sources": sources}
     ranked = rerank(question, candidates(question, mode="hybrid"))
     if not ranked or ranked[0].score < ANSWER_FLOOR:

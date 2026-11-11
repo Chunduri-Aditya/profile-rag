@@ -9,7 +9,8 @@ from profile_rag.retrieve import answer, candidates, faq_match, rerank
 def test_rerank_puts_overview_first_for_what_is():
     q = "what is taintgate"
     fused = candidates(q, mode="hybrid")
-    assert fused[0].node.node_id != "project/taintgate/overview", "fusion already right; test proves nothing"
+    assert fused[0].node.node_id != "project/taintgate/overview", \
+        "fusion already right; test proves nothing"
     top = rerank(q, fused)[0]
     assert top.node.node_id == "project/taintgate/overview"
 
@@ -53,7 +54,8 @@ def test_api_ask_shape():
 def test_eval_floor():
     out = run(modes=("bm25", "hybrid+rerank"))
     by = {r["mode"]: r for r in out["rows"]}
-    assert by["hybrid+rerank"]["recall@3"] >= 0.97  # ratchet: 0.979 on 2026-09-22; rerank removed reads 0.958
+    # ratchet: 0.979 on 2026-09-22; rerank removed reads 0.958
+    assert by["hybrid+rerank"]["recall@3"] >= 0.97
     assert by["hybrid+rerank"]["recall@3"] >= by["bm25"]["recall@3"]
 
 
@@ -63,3 +65,41 @@ def test_warm_touches_the_reranker():
     out = retrieve.warm()
     assert out["reranked"] == out["chunks"] > 0
     assert retrieve._reranker.cache_info().currsize == 1
+
+
+def test_faq_sources_are_exact_corpus_ids():
+    import json
+
+    import yaml
+
+    from profile_rag.config import CORPUS, ROOT
+
+    faq = yaml.safe_load((ROOT / "faq.yaml").read_text())
+    ids = {json.loads(line)["id"] for line in CORPUS.read_text().splitlines() if line.strip()}
+    assert faq and ids
+    missing = [e["source"] for e in faq if e["source"] not in ids]
+    assert missing == []
+
+
+def test_publications_faq_returns_its_source():
+    out = answer("What are Aditya's publications?")
+    assert out["mode"] == "faq"
+    assert [s["id"] for s in out["sources"]] == [
+        "publication/Beyond Attack Success Rate: Measuring Operator-Facing Transparency"
+        " in LLM Agent Security"
+    ]
+
+
+def test_every_faq_answer_returns_its_source():
+    import yaml
+
+    from profile_rag.config import ROOT
+
+    faq = yaml.safe_load((ROOT / "faq.yaml").read_text())
+    bad = []
+    for entry in faq:
+        out = answer(entry["q"])
+        got = [s["id"] for s in out["sources"]]
+        if out["mode"] != "faq" or got != [entry["source"]]:
+            bad.append((entry["q"], out["mode"], got))
+    assert bad == []

@@ -29,7 +29,10 @@ def score(bank: list[dict], mode: str) -> dict:
     r1 = r3 = rr = 0.0
     for item in bank:
         ids = ranked_ids(item["q"], mode)
-        rank = next((i for i, cid in enumerate(ids) if any(cid.startswith(p) for p in item["expect"])), None)
+        rank = next(
+            (i for i, cid in enumerate(ids) if any(cid.startswith(p) for p in item["expect"])),
+            None,
+        )
         if rank is not None:
             rr += 1 / (rank + 1)
             r3 += rank < 3
@@ -52,6 +55,7 @@ if __name__ == "__main__":
     out = run()
     print(f"{'mode':16} {'n':>3} {'r@1':>6} {'r@3':>6} {'mrr':>6}")
     for r in out["rows"]:
-        print(f"{r['mode']:16} {r['n']:>3} {r['recall@1']:6.3f} {r['recall@3']:6.3f} {r['mrr']:6.3f}")
+        print(f"{r['mode']:16} {r['n']:>3} {r['recall@1']:6.3f} {r['recall@3']:6.3f} "
+              f"{r['mrr']:6.3f}")
     print(f"faq hit rate on bank: {out['faq_hit_rate']:.3f}")
     sys.exit(0)

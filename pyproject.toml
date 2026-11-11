@@ -1,7 +1,8 @@
 [project]
 name = "profile-rag"
 version = "0.1.0"
-description = "Add your description here"
+description = "Retrieval only question answering over Aditya Chunduri's public portfolio: BM25 plus dense search, cross encoder rerank, no LLM."
+license = "MIT"
 readme = "README.md"
 authors = [
     { name = "Aditya Chunduri", email = "aditya2210.a1@gmail.com" }
@@ -32,4 +33,15 @@ build-backend = "uv_build"
 dev = [
     "httpx>=0.28.1",
     "pytest>=9.1.1",
+    "ruff>=0.17.4",
 ]
+
+[tool.pytest.ini_options]
+markers = ["slow: runs the full eval bank"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

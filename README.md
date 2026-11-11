@@ -19,6 +19,16 @@ curl -s localhost:8000/health
 curl -s -X POST localhost:8000/ask -H 'content-type: application/json' -d '{"question":"what is Agent Shield"}'
 ```
 
+## Model cache
+
+The two ONNX models download on first use. By default fastembed caches them in the system temp folder (`fastembed_cache` under `tempfile.gettempdir()`), and the OS can purge that folder. Set `FASTEMBED_CACHE_PATH` to a durable folder before `build`, `pytest` and `uvicorn`:
+
+```bash
+export FASTEMBED_CACHE_PATH="$HOME/.cache/fastembed"
+```
+
+The Docker image sets it to `/app/.fastembed`.
+
 ## Ask from the terminal
 
 ```bash
