@@ -103,3 +103,42 @@ def test_every_faq_answer_returns_its_source():
         if out["mode"] != "faq" or got != [entry["source"]]:
             bad.append((entry["q"], out["mode"], got))
     assert bad == []
+
+
+def test_faq_answers_only_state_numbers_the_corpus_states():
+    """The FAQ is served verbatim, so a number the site dropped must not survive here."""
+    import json
+    import re
+
+    import yaml
+
+    from profile_rag.config import CORPUS, ROOT
+
+    faq = yaml.safe_load((ROOT / "faq.yaml").read_text())
+    corpus = " ".join(
+        json.loads(line)["text"] for line in CORPUS.read_text().splitlines() if line.strip()
+    )
+    stale = {
+        e["q"]: n
+        for e in faq
+        for n in re.findall(r"\d[\d,.]*\d|\d", e["a"])
+        if n not in corpus
+    }
+    assert stale == {}
+
+
+def test_faq_answers_match_their_source_dates():
+    import json
+
+    import yaml
+
+    from profile_rag.config import CORPUS, ROOT
+
+    faq = yaml.safe_load((ROOT / "faq.yaml").read_text())
+    text = {
+        json.loads(line)["id"]: json.loads(line)["text"]
+        for line in CORPUS.read_text().splitlines()
+        if line.strip()
+    }
+    present = [e["q"] for e in faq if "present" in e["a"] and "present" not in text[e["source"]]]
+    assert present == []
